@@ -1,0 +1,26 @@
+{
+    "$shema" : "not_yet_rated",
+    "title" : "Test",
+    "include": [
+        "../parent/test.json"
+    ],
+    "ClassArray" :[
+        {
+            "Id" :{
+                "name": "profile_test",
+                "parent": "profile_parent"
+            },
+            "class" :{
+                "dataI": 6,
+                "dataF": 4.3,
+                "SubClass":{
+                    "int":5,
+                    "float": 4.7
+                }
+            },
+            "anotherClass":{
+                "otherData": "..."
+            }
+        }
+    ]
+}
