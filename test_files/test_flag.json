@@ -1,0 +1,16 @@
+{
+    "$shema" : "not_yet_rated",
+    "title" : "Test_flag",
+    "include": [],
+    "ClassArray" :[
+        {
+            "Id" :{
+                "name": "profile_flag",
+                "parent": null
+            },
+            "FlagStruct" :{
+                "flagVal": "Flag1|Flag2"
+            }
+        }
+    ]
+}

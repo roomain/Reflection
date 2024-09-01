@@ -1,7 +1,7 @@
 #pragma once
 /***********************************************
 * @headerfile test_reflect_structs.generated.h
-* @date 10/8/2024
+* @date 1/9/2024
 * @author reflecGen.py
 ************************************************/
 #include <variant>
@@ -20,5 +20,13 @@ for(const auto&[name, data] : a_serialized) \
 		std::visit(Deserializer<float>{ &a_this.Test_float }, data); \
 	if(name == "Test_string") \
 		std::visit(Deserializer<std::string>{ &a_this.Test_string }, data); \
+}\
+
+/* class deserialization macro */
+#define _DESERIALIZE_FlagStruct \
+for(const auto&[name, data] : a_serialized) \
+{ \
+	if(name == "flagVal") \
+		std::visit(Deserializer<EFlag>{ &a_this.flagVal }, data); \
 }\
 

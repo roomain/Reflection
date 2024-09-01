@@ -183,6 +183,8 @@ reflectGen.py $(ProjectDir)
     <ClCompile Include="unit_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="deserialize_flag.h" />
+    <ClInclude Include="flag.h" />
     <ClInclude Include="test_reflect_structs.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
