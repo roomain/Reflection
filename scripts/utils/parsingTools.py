@@ -41,7 +41,7 @@ class BracketCounter:
 
 def removeMultilineComments(file, line):
     beforeComment = re.search("(.*)/\*", line).group(1)
-    afterComment = re.search("*/(.*)", line).group(1)
+    afterComment = re.search("\*/(.*)", line).group(1)
     while (afterComment is None) and not file.atEnd():
         line = file.nextTrimmedLine()
         afterComment = re.search("*/(.*)", line).group(1)
@@ -52,6 +52,7 @@ def removeMultilineComments(file, line):
         usedLine = beforeComment
     else :
         usedLine = beforeComment + " " + afterComment
+        
     return usedLine
 
 
