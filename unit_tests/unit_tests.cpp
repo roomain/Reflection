@@ -40,7 +40,7 @@ namespace unittests
 			DeserializeManager::instance().load(curPath.string(), "profile_flag");
 
 			FlagStruct flag;
-			Assert::AreEqual(static_cast<unsigned int>(flag.flagVal), static_cast<unsigned int>(EFlag::Flag1 | EFlag::Flag2), L"WRONG SHORT");
+			Assert::AreEqual(static_cast<unsigned int>(flag.flagVal), static_cast<unsigned int>(EFlag::Flag1 | EFlag::Flag2), L"WRONG FLAG");
 			//Assert::AreEqual(testStruct.Test_int, 2, L"WRONG INT");
 			//Assert::AreEqual(testStruct.Test_float, 3.4f, L"WRONG FLOAT");
 			//Assert::AreEqual(testStruct.Test_string, std::string("test"), L"WRONG STRING");
