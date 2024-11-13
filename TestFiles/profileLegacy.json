@@ -1,0 +1,18 @@
+{
+    "$shema": "not_yet_rated",
+    "title": "test_simple",
+    "include": ["test_simple.json"],
+    "ClassArray": [
+        {
+            "Id": {
+                "name": "profileLegacy",
+                "parent": "profile"
+            },
+            "Test_Simple": {
+                "floatValue": 6.98,
+                "doubleValue": 15.2,
+                "stringValue": "Hello"
+            }
+        }
+    ]
+}

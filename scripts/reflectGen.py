@@ -21,8 +21,7 @@ class GeneratedMember :
         return len(self.type) > 0 and len(self.name) > 0
     
     def generateDeserialize(self, file):
-        file.write("\tif(name == \"{}\") \\\n".format(self.name))
-        file.write("\t\tstd::visit(Deserializer<{}>{{ &a_this.{} }}, data); \\\n".format(self.type, self.name))
+        file.write("reflectObj->deserialize<{}>(\"{}\", a_this->{}); \\\n".format(self.type, self.name, self.name))
 
 #-----------------------------------------------------------------------------
 # used for int represented a flag
@@ -35,8 +34,9 @@ class GeneratedFlag(GeneratedMember):
         print("\\t{} {} Flag<{}>".format(self.type, self.name, self.baseType))
 
     def generateDeserialize(self, file):
-        file.write("\tif(name == \"{}\") \\\n".format(self.name))
-        file.write("\t\tstd::visit(FlagDeserializer<{}, {}>{{ &a_this.{} }}, data); \\\n".format(self.type, self.baseType, self.name))
+        file.write("reflectObj->deserialize<{}>(\"{}\", a_this->{}); \\\n".format(self.type, self.name, self.name))
+        #file.write("\tif(name == \"{}\") \\\n".format(self.name))
+        #file.write("\t\tstd::visit(FlagDeserializer<{}, {}>{{ &a_this.{} }}, data); \\\n".format(self.type, self.baseType, self.name))
         
 #-----------------------------------------------------------------------------
 
@@ -52,13 +52,10 @@ class GeneratedClass :
 
     def generateDeserialize(self, file):
         # implements class/struct deserialization
-        file.write("/* class deserialization macro */\n")
-        file.write("#define _DESERIALIZE_{} \\\n".format(self.classname))
-        file.write("for(const auto&[name, data] : a_serialized) \\\n")
-        file.write("{ \\\n")
+        file.write("\n\n/* class deserialization macro */\n")
+        file.write("#define _DESERIALIZE_{}(reflectObj) \\\n".format(self.classname))
         for member in self.members :
             member.generateDeserialize(file)
-        file.write("}\\\n\n")
 
 #-----------------------------------------------------------------------------
 
@@ -148,9 +145,10 @@ class HeaderParser :
             file.write("* @date {}/{}/{}\n".format(dateNow.day, dateNow.month, dateNow.year))
             file.write("* @author reflecGen.py\n")
             file.write("************************************************/\n")
-            file.write("#include <variant>\n")
-            file.write("#include \"DeserializeManager.h\"\n")
-            file.write("#include \"Deserializer.h\"\n\n")
+            file.write("#include \"ReflectionClass.h\"\n")
+            #file.write("#include <variant>\n")
+            #file.write("#include \"DeserializeManager.h\"\n")
+            #file.write("#include \"Deserializer.h\"\n\n")
             for classParsed in self.classList:
                 classParsed.generateDeserialize(file)
 

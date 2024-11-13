@@ -1,0 +1,20 @@
+{
+    "$shema": "not_yet_rated",
+    "title": "test_vector",
+    "include": [],
+    "ClassArray": [
+        {
+            "Id": {
+                "name": "profileVector",
+                "parent": null
+            },
+            "Test_Vector": {
+                "vintegerValue": [-8, -5, 3,2],
+                "vunsignedValue": [5, 6, 7, 8,9,10],
+                "vfloatValue": [60.98, 10.2],
+                "vdoubleValue": [1.2, 3.5, 8.6],
+                "vstringValue": ["Hello world", "Good bye"]
+            }
+        }
+    ]
+}

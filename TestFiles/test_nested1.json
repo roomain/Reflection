@@ -1,0 +1,25 @@
+{
+    "$shema": "not_yet_rated",
+    "title": "test_simple",
+    "include": [],
+    "ClassArray": [
+        {
+            "Id": {
+                "name": "profileNested1",
+                "parent": null
+            },
+            "Test_Simple": {
+                "booleanValue": false,
+                "integerValue": -4,
+                "unsignedValue": 9,
+                "floatValue": 6.98,
+                "doubleValue": 15.2,
+                "stringValue": "Hello"
+            },
+
+            "Test_Nested": {
+                "bValue": true
+            }
+        }
+    ]
+}
