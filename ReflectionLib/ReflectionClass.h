@@ -2,9 +2,12 @@
 #include <string>
 #include <unordered_map>
 #include "ReflectionValue.h"
+#include "ReflectionGlobals.h"
 
+#pragma warning(push)
+#pragma warning( disable : 4251 )
 /*@brief reflection class*/
-class ReflectionClass
+class REFLECTION_LIB ReflectionClass
 {
     friend class ReflectionJsonParser;
 
@@ -41,3 +44,5 @@ public:
         return bIsOverrided;
     }
 };
+
+#pragma warning(pop)

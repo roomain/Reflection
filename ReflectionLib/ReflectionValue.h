@@ -10,7 +10,11 @@
 #include "reflectionTraits.h"
 #include "ReflectionException.h"
 #include "ReflectionManager.h"
+#include "ReflectionGlobals.h"
 
+
+#pragma warning(push)
+#pragma warning( disable : 4251 )
 
 using VariantValue = std::variant<int, unsigned int, double, std::string, ReflectionClassPtr>;
 using VariantMember = std::variant<int, unsigned int, double, std::string, std::vector<VariantValue>, ReflectionClassPtr>;
@@ -18,7 +22,7 @@ using ToIntFunction = std::function<int(const std::string&)>;
 
 // limitation: can't have a matrix data
 
-class ReflectionValue
+class REFLECTION_LIB ReflectionValue
 {
     friend class ReflectionJsonParser;
 
@@ -204,3 +208,5 @@ public:
         std::visit(visitor, m_variantData);
     }
 };
+
+#pragma warning(pop)

@@ -4,6 +4,7 @@
 #include "ReflectionManager.h"
 #include "Test_structs.h"
 
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTests

@@ -3,7 +3,10 @@
 #include <memory>
 #include <unordered_map>
 #include "common/notCopiable.h"
+#include "ReflectionGlobals.h"
 
+#pragma warning(push)
+#pragma warning( disable : 4251 )
 
 class ReflectionClass;
 using ReflectionClassPtr = std::shared_ptr<ReflectionClass>;
@@ -11,7 +14,7 @@ using ReflectionClassUPtr = std::unique_ptr<ReflectionClass>;
 using ReflectionObjectDatabase = std::unordered_map<std::string, ReflectionClassPtr>;
 
 /*@brief singleton providing json deserialisation*/
-class ReflectionManager
+class REFLECTION_LIB ReflectionManager
 {
 private:
 	ReflectionObjectDatabase m_registeredClass;	/*!< class/struct readed from Json*/
@@ -28,3 +31,4 @@ public:
 	void resetOverride(const std::string& a_classname);
 	void clear();
 };
+#pragma warning(pop)
