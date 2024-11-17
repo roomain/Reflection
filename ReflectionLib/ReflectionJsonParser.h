@@ -14,6 +14,8 @@ namespace boost::json
 	class value;
 }
 
+struct ParserInfo;
+
 /*
 * Method:
 * 1. list profiles
@@ -24,6 +26,7 @@ namespace boost::json
 class ReflectionJsonParser
 {
 private:
+
 	// ancestor of desired profile, last is the most ancient
 	std::vector<boost::json::object> m_profileAncestors;
 
@@ -34,17 +37,17 @@ private:
 	static inline const std::string PARENT = "parent";
 
 	static [[nodiscard]] const boost::json::value& findValue(const boost::json::value& a_jsonRoot, const std::string& a_nodeName);
-	static void getIncludes(const boost::json::value& a_includeNode, std::vector<std::string>& a_includeFiles);
-	[[nodiscard]] bool readClassArray(const boost::json::value& a_arrayNode, const std::string& a_SearchProfile, std::string& a_ancestor);
-	static bool getProfile(const boost::json::object& a_object, std::string& a_profile, std::string& a_parent);
+	static void getIncludes(const boost::json::value& a_includeNode, std::vector<std::string>& a_includeFiles, ParserInfo& a_info);
+	[[nodiscard]] bool readClassArray(const boost::json::value& a_arrayNode, const std::string& a_SearchProfile, std::string& a_ancestor, ParserInfo& a_info);
+	static bool getProfile(const boost::json::object& a_object, std::string& a_profile, std::string& a_parent, ParserInfo& a_info);
 
 	[[nodiscard]] static  bool readjsonFile(const std::string& a_file, boost::json::value& a_jsonRoot);
-	void extractProfilesClasses(const boost::json::object& a_object, ReflectionObjectDatabase& a_classDatabase);
-	void extractClass(const std::string& a_className, const boost::json::object& a_object, ReflectionObjectDatabase& a_classDatabase);
-	static void extractInstance(const boost::json::object& a_object, const ReflectionClassPtr& a_reflectInstance);
+	void extractProfilesClasses(const boost::json::object& a_object, ReflectionObjectDatabase& a_classDatabase, ParserInfo& a_info);
+	void extractClass(const std::string& a_className, const boost::json::object& a_object, ReflectionObjectDatabase& a_classDatabase, ParserInfo& a_info);
+	static void extractInstance(const boost::json::object& a_object, const ReflectionClassPtr& a_reflectInstance, ParserInfo& a_info);
 
 public:
 	ReflectionJsonParser() = default;
 	virtual ~ReflectionJsonParser() = default;
-	bool loadFile(const std::string& a_file, const std::string& a_profile, ReflectionObjectDatabase& a_classDatabase);
+	bool loadFile(const std::string& a_file, const std::string& a_profile, ReflectionObjectDatabase& a_classDatabase, ParserInfo& a_info);
 };

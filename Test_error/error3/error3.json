@@ -1,0 +1,19 @@
+{
+    "$shema": "not_yet_rated",
+    "title": "test_simple",
+    "include": [],
+    "ClassArray": [
+        {
+            "Test_Simple": {
+                "booleanValue": true,
+                "integerValue": -8,
+                "unsignedValue": 5,
+                "floatValue": 60.98,
+                "doubleValue": 1.2,
+                "stringValue": [
+                    [1,3, 5]
+                ]
+            }
+        }
+    ]
+}

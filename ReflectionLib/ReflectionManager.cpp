@@ -6,6 +6,7 @@
 #include <vector>
 #include "ReflectionUtils.h"
 #include "ReflectionJsonParser.h"
+#include "ReflectionException.h"
 
 namespace fs = std::filesystem;
 
@@ -27,7 +28,10 @@ void ReflectionManager::load(const std::string& a_directory, const std::string& 
 	{
 		ReflectionJsonParser parser;
 		for (const auto& entry : fs::recursive_directory_iterator(jsonDir) | std::views::filter(isJsonFile))
-			parser.loadFile(entry.path().string(), a_profile, m_registeredClass);
+		{
+			ParserInfo info{ .filename = entry.path().string() };
+			parser.loadFile(entry.path().string(), a_profile, m_registeredClass, info);
+		}
 	}
 }
 

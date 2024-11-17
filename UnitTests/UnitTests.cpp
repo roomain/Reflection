@@ -1,5 +1,6 @@
 #include "pch.h"
 #include <filesystem>
+#include <iostream>
 #include "CppUnitTest.h"
 #include "ReflectionManager.h"
 #include "Test_structs.h"
@@ -125,6 +126,55 @@ namespace UnitTests
 			Assert::AreEqual(15.2, testSimple.doubleValue, L"Wrong double value");
 			Assert::AreEqual(std::string("Hello"), testSimple.stringValue, L"Wrong string value");
 			ReflectionManager::instance().clear();
+		}
+
+
+		TEST_METHOD(Test_error1)
+		{
+			try
+			{
+				auto curPath = std::filesystem::current_path();
+				curPath = curPath.parent_path().parent_path().append("Test_error/error1");
+				ReflectionManager::instance().load(curPath.string(), "profile");
+				Assert::Fail();
+			}
+			catch (ReflectionException& except)
+			{
+				auto msg = except.message();
+				std::cout << msg;
+			}
+		}
+
+		TEST_METHOD(Test_error2)
+		{
+			try
+			{
+				auto curPath = std::filesystem::current_path();
+				curPath = curPath.parent_path().parent_path().append("Test_error/error2");
+				ReflectionManager::instance().load(curPath.string(), "profile");
+				Assert::Fail();
+			}
+			catch (ReflectionException& except)
+			{
+				auto msg = except.message();
+				std::cout << msg;
+			}
+		}
+
+		TEST_METHOD(Test_error3)
+		{
+			try
+			{
+				auto curPath = std::filesystem::current_path();
+				curPath = curPath.parent_path().parent_path().append("Test_error/error3");
+				ReflectionManager::instance().load(curPath.string(), "profile");
+				Assert::Fail();
+			}
+			catch (ReflectionException& except)
+			{
+				auto msg = except.message();
+				std::cout << msg;
+			}
 		}
 	};
 }
