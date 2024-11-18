@@ -37,5 +37,6 @@
 **/.vs/
 **/Debug/
 **/Release/
+**/__pycache__
 VS*/
 rtti-cppcheck-build-dir/
