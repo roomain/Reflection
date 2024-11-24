@@ -115,7 +115,7 @@ private:
             }
         }
 
-        void operator()(const std::vector<VariantValue>& a_value)
+        void operator()(const std::vector<VariantValue>&)
         {
             // log error
         }
@@ -142,27 +142,27 @@ private:
     struct VectorVisitor
     {
         std::vector<Type>& data;// data to fill
-        void operator()(const bool a_value)
+        void operator()(const bool)
         {
             // log error
         }
 
-        void operator()(const int a_value)
+        void operator()(const int)
         {
             // log error
         }
 
-        void operator()(const unsigned int a_value)
+        void operator()(const unsigned int)
         {
             // log error
         }
 
-        void operator()(const double& a_value)
+        void operator()(const double&)
         {
             // log error
         }
 
-        void operator()(const std::string& a_value)
+        void operator()(const std::string&)
         {
             // log error
         }
@@ -178,7 +178,7 @@ private:
             }
         }
 
-        void operator()(const ReflectionClassPtr& a_value)
+        void operator()(const ReflectionClassPtr&)
         {
             // log error
         }
@@ -188,7 +188,7 @@ private:
 public:
     ReflectionValue() = default;
     virtual ~ReflectionValue() = default;
-    template<typename EnumType> requires std::is_enum_v<EnumType>
+    template<typename EnumType> //requires std::is_enum_v<EnumType>
     static void registerCast(const ToIntFunction& a_callback)
     {
         m_enumCast.emplace(typeid(EnumType).name(), a_callback);

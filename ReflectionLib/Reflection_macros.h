@@ -46,7 +46,7 @@ inline void classname::deserialize(classname* const a_this)                     
     }                                                                                                   \
 }                                                                                                       \
                                                                                                         \
-classname::classname()                                                                                  \
+inline classname::classname()                                                                           \
 {                                                                                                       \
     classname::deserialize(this);                                                                       \
 }   
