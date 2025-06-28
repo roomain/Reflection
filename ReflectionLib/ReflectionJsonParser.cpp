@@ -125,7 +125,7 @@ bool ReflectionJsonParser::readClassArray(const boost::json::value& a_arrayNode,
 bool ReflectionJsonParser::readjsonFile(const std::string& a_file, boost::json::value& a_jsonRoot)
 {
 	std::ifstream jsonFile(a_file);
-	boost::json::error_code erroCode;
+	boost::system::error_code erroCode;
 	a_jsonRoot = boost::json::parse(jsonFile, erroCode);
 	return !a_jsonRoot.is_null();
 }
